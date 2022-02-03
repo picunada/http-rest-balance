@@ -4,19 +4,19 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"github.com/picunada/http-rest-balance/internal/users"
 	"github.com/picunada/http-rest-balance/pkg/logging"
-	"log"
 	"net"
 	"net/http"
 	"time"
 )
 
 func main() {
-	logging.Init()
+	logger := logging.GetLogger()
+	logger.Info("Create router")
 	router := httprouter.New()
-	usersHandler := users.NewHandler()
+	usersHandler := users.NewHandler(logger)
 	//balanceHandler := users.NewHandler()
 
-	log.Println("Register handlers")
+	logger.Info("Register handlers")
 	//balanceHandler.Register(router)
 	usersHandler.Register(router)
 
@@ -24,7 +24,8 @@ func main() {
 }
 
 func start(router *httprouter.Router) {
-	log.Println("Start server")
+	logger := logging.GetLogger()
+	logger.Info("Start server")
 	listener, err := net.Listen("tcp", "127.0.0.1:8001")
 	if err != nil {
 		panic(err)
@@ -36,6 +37,6 @@ func start(router *httprouter.Router) {
 		ReadTimeout:  15 * time.Second,
 	}
 
-	log.Println("server in listening on port 8001")
-	log.Fatalln(server.Serve(listener))
+	logger.Info("server in listening on port 8001")
+	logger.Fatal(server.Serve(listener))
 }

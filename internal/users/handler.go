@@ -3,15 +3,19 @@ package users
 import (
 	"fmt"
 	"github.com/julienschmidt/httprouter"
-	"github.com/picunada/http-rest-balance/internal/hanlders"
+	"github.com/picunada/http-rest-balance/internal/handlers"
+	"github.com/picunada/http-rest-balance/pkg/logging"
 	"net/http"
 )
 
 type handler struct {
+	logger logging.Logger
 }
 
-func NewHandler() hanlders.Handler {
-	return &handler{}
+func NewHandler(logger logging.Logger) hanlders.Handler {
+	return &handler{
+		logger: logger,
+	}
 }
 
 func (h *handler) Register(router *httprouter.Router) {

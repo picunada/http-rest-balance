@@ -3,7 +3,7 @@ package balance
 import (
 	"fmt"
 	"github.com/julienschmidt/httprouter"
-	"github.com/picunada/http-rest-balance/internal/hanlders"
+	"github.com/picunada/http-rest-balance/internal/handlers"
 	"net/http"
 )
 

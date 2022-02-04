@@ -9,10 +9,10 @@ import (
 )
 
 type handler struct {
-	logger logging.Logger
+	logger *logging.Logger
 }
 
-func NewHandler(logger logging.Logger) hanlders.Handler {
+func NewHandler(logger *logging.Logger) hanlders.Handler {
 	return &handler{
 		logger: logger,
 	}
@@ -26,17 +26,17 @@ func (h *handler) Register(router *httprouter.Router) {
 }
 
 func (h *handler) GetAllUsers(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
-	w.Write([]byte(fmt.Sprintf("this is balance")))
+	w.Write([]byte(fmt.Sprintf("this is operations")))
 }
 
 func (h *handler) GetUserById(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
-	w.Write([]byte(fmt.Sprintf("this is balance")))
+	w.Write([]byte(fmt.Sprintf("this is operations")))
 }
 
 func (h *handler) UpdateUser(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
-	w.Write([]byte(fmt.Sprintf("this is balance")))
+	w.Write([]byte(fmt.Sprintf("this is operations")))
 }
 
 func (h *handler) CreateUser(w http.ResponseWriter, r *http.Request, params httprouter.Params) {
-	w.Write([]byte(fmt.Sprintf("this is balance")))
+	w.Write([]byte(fmt.Sprintf("this is operations")))
 }

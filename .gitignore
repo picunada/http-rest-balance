@@ -2,3 +2,6 @@
 ./go.sum
 ./apiserver
 /logs
+app.sock
+.env
+check.http

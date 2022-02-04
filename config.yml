@@ -1,0 +1,13 @@
+---
+
+is_debug: true
+listen:
+  type: port
+  bind_ip: localhost
+  port: 8001
+
+storage:
+  port: 5432
+  host: localhost
+  name:
+  max_attempts: 5
